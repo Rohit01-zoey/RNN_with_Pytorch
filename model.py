@@ -22,7 +22,7 @@ class RNN(nn.Module):
         batch_size = x.size(0) # getting the batch size
         hidden = self._init_hidden(batch_size).to(self.device) # rnn expects hidden state as input along with input tensor
         out, hidden = self.rnn(x, hidden) # returns output and hidden state as tuple
-        out = out.contiguous().view(-1, self.hidden_size) # reshaping the outputs such that it can be fit into the fully connected layer
+        # out = out.contiguous().view(-1, self.hidden_size) # reshaping the outputs such that it can be fit into the fully connected layer
         out = self.fc(out) # get output from hidden state
         return out, hidden # return output and hidden state
     
